@@ -17,14 +17,23 @@ public class Solution_58 {
         return end - start;
     }
 
-    // public static int lengthOfLastWord1(String s) {
+    public static int lengthOfLastWord1(String s) {
+        return helper(s, s.length() - 1, false);
+    }
 
-    // }
-
-    public static void fun(char[] chas, int index, int start, int end) {
-        if (chas[index] == ' ') {
-            fun(chas, index - 1, start, end);
+    private static int helper(String s, int index, boolean counting) {
+        if (index < 0) {
+            return 0;
         }
-
+        char c = s.charAt(index);
+        if (c == ' ') {
+            if (counting) {
+                return 0; // 计数阶段遇到空格：终止计数
+            } else {
+                return helper(s, index - 1, false); // 跳过尾部空格
+            }
+        } else {
+            return 1 + helper(s, index - 1, true); // 计数非空格字符
+        }
     }
 }
