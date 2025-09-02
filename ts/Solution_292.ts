@@ -1,11 +1,11 @@
 function canWinNim(n: number): boolean {
-    function canyouWin(num:number):number {
-        for (let i = 1; i <= Math.min(num, 3); i++) {
-            let left = canyouWin(num - i);
-            if (left == 0) {
-                
-            }
-        }
+    
+    function canWin(num: number) {
+        if (num <= 3) return true;
+        return !canWin(num - 1) || !canWin(num - 2)
+            || !canWin(num - 3)
     }
-};
+    return canWin(n)
 
+
+}
