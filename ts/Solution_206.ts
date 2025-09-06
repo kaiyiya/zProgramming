@@ -8,15 +8,21 @@ class ListNode {
     }
 }
 function reverseList(head: ListNode | null): ListNode | null {
-    function reverse(node: ListNode | null): ListNode | null {
-        if (node == null) return null;
-        let cur: ListNode | null = reverse(node?.next);
-        if(cur==null) return node;
-        cur.next = node;
-        return cur;
+    // 基本情况：空节点或只有一个节点
+    if (head === null || head.next === null) {
+        return head;
     }
-    return reverse(head);
-};
+
+    // 递归反转剩余部分
+    const newHead = reverseList(head.next);
+
+    // 反转当前连接
+    head.next.next = head;
+    head.next = null;
+
+    // 返回新的头节点
+    return newHead;
+}
 
 function printList(head: ListNode | null): void {
     let node: ListNode | null = head;
