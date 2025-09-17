@@ -1,6 +1,6 @@
 function titleToNumber(columnTitle: string): number {
 
-    function getNum(index: number) {
+    function getNum(index: number) :any{
         if (index == 0) return columnTitle[index].charCodeAt(0) - 64
         let res = getNum(index - 1);
         return 26 *res +  (columnTitle[index].charCodeAt(0) - 64)

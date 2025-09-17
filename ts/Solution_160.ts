@@ -1,6 +1,6 @@
 import { ListNode } from './common/printListNode'
 function getIntersectionNode(headA: ListNode | null, headB: ListNode | null): ListNode | null {
-    function getLen(node: ListNode | null) {
+    function getLen(node: ListNode | null) :any{
         if (node == null) return 0
         return getLen(node?.next ?? null) + 1
     }
